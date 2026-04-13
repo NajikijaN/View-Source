@@ -1,0 +1,226 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* ── palette ─────────────────────────────────────── */
+/* dark:   #0f0d13  #1a1520  #231e2a                 */
+/* blossom: #f2a6b8  #e8799a  #d94f7a  #fcd5df       */
+
+body {
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    margin: 0;
+    color: #ede4ec;
+    background:
+        radial-gradient(circle at 25% 8%, rgba(242, 166, 184, 0.12) 0%, transparent 44%),
+        radial-gradient(circle at 80% 18%, rgba(217, 79, 122, 0.10) 0%, transparent 40%),
+        linear-gradient(160deg, #0f0d13 0%, #1a1520 50%, #231e2a 100%);
+}
+
+.app-shell {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+}
+
+.source-card {
+    width: min(760px, 100%);
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    text-align: center;
+}
+
+.source-card h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: white;
+    text-align: center;
+}
+
+.source-card p {
+    margin: 0.95rem 0 1.6rem;
+    color: #a898a8;
+    line-height: 1.6;
+}
+
+.source-form label {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #d4c4d4;
+    margin-bottom: 0.65rem;
+}
+
+.form-error {
+    margin: 0.65rem 0 0;
+    color: #f87171;
+    font-size: 0.88rem;
+    font-weight: 500;
+}
+
+.input-prefix {
+    content: '';
+    border-radius: 0.75rem 0 0 0.75rem;
+    background: rgba(242, 166, 184, 0.22);
+    color: rgb(255 255 255 / 22%);
+    padding: 0.82rem 0.95rem;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.01em;
+}
+
+.input-row {
+    display: flex;
+    transition: all 160ms ease;
+    height: 4rem;
+}
+
+.input-row::focus-within .input-prefix {
+    background: linear-gradient(135deg, #e8799a 0%, #d94f7a 100%);
+}
+
+.input-row input {
+    flex: 1;
+    border: 1px solid rgba(242, 166, 184, 0.22);
+    background: rgba(15, 13, 19, 0.7);
+    color: #ede4ec;
+    padding: 0.82rem 0.95rem;
+    font-size: 1rem;
+    transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.input-row input::placeholder {
+    color: #7a6b7a;
+}
+
+.input-row input:focus-visible {
+    outline: none;
+}
+
+.input-row button {
+    border: 0;
+    border-radius: 0 0.75rem 0.75rem 0;
+    padding: 0.82rem 1.1rem;
+    background: linear-gradient(135deg, #d94f7a 0%, #e8799a 100%);
+    color: white;
+    font-weight: 700;
+    font-size: 0.96rem;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease, padding-left 160ms ease;
+    white-space: nowrap;
+}
+
+.input-row button:hover {
+    box-shadow: 0 10px 20px -10px rgba(217, 79, 122, 0.55);
+    filter: brightness(1.08);
+    padding-left: 1.5rem;
+}
+
+.input-row button:active {
+    transform: translateY(0);
+}
+
+@keyframes unfold {
+    from {
+        max-height: 0;
+        opacity: 0;
+        padding-top: 0;
+        margin-top: 0;
+    }
+    to {
+        max-height: 600px;
+        opacity: 1;
+        padding-top: 1.2rem;
+        margin-top: 1.5rem;
+    }
+}
+
+.source-result {
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(242, 166, 184, 0.15);
+    padding-top: 1.2rem;
+    overflow: hidden;
+    animation: unfold 0.5s ease-out forwards;
+    text-align: left;
+}
+
+.source-result h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.05rem;
+    color: #f2a6b8;
+}
+
+.source-result pre {
+    margin: 0;
+    color: #d4c4d4;
+    border-radius: 0 0.8rem 0 0.8rem;
+    max-height: 420px;
+    overflow: auto;
+    font-size: 0.84rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(242, 166, 184, 0.22) rgba(15, 13, 19, 0.7);
+}
+
+.source-result pre::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.source-result pre::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.source-result pre::-webkit-scrollbar-thumb {
+    background: #d94f7a;
+    border-radius: 4px;
+}
+
+.source-result pre::-webkit-scrollbar-thumb:hover {
+    background: #e8799a;
+}
+
+.source-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15, 13, 19, 0.7);
+    padding: 0.65rem 0.95rem;
+    border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.copy-button {
+    border: 0;
+    background: linear-gradient(135deg, #d94f7a 0%, #e8799a 100%);
+    color: #f2a6b8;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0.25rem 0.65rem;
+    border-radius: 0.5rem;
+    transition: background-color 160ms ease, color 160ms ease;
+}
+
+@media (max-width: 640px) {
+    .input-row {
+        flex-direction: column;
+        gap: 0.65rem;
+    }
+
+    .input-row button {
+        width: 100%;
+    }
+}
