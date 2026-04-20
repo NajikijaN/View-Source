@@ -8,7 +8,7 @@ Route::get('/', function () {
 });
 
 Route::post('/viewsource', function () {
-        $url = trim(request('url'));
+    $url = trim(request('url'));
         if (str_starts_with($url, 'data:')) {
             return view('welcome', [
                 'source' => 'Data URLs (base64-encoded images or files) are not supported.',

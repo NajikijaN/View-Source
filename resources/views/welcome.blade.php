@@ -30,7 +30,7 @@
                     <div class="source-header">
                         <h2>{{ $url }}</h2>
                     </div>
-                    <pre><code class="language-html">{{ $source }}</code></pre>
+                    <pre style="max-width:100%;overflow-x:auto;"><code class="language-html" style="word-break:break-all;overflow-wrap:break-word;">{{ $source }}</code></pre>
                 </section>
             @endisset
         </section>
