@@ -29,6 +29,9 @@
                 <section class="source-result" aria-live="polite">
                     <div class="source-header">
                         <h2>{{ $url }}</h2>
+                        <div class="checkbox">
+                            <input type="checkbox" id="overflow-checkbox">Wrap
+                        </div>
                     </div>
                     <pre style="max-width:100%;overflow-x:auto;"><code class="language-html" style="word-break:break-all;overflow-wrap:break-word;">{{ $source }}</code></pre>
                 </section>
