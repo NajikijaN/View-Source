@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Http;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::post('/viewsource', function () {
     $url = trim(request('url'));
@@ -50,5 +50,5 @@ Route::post('/viewsource', function () {
 })->name('viewsource.post');
 
 Route::get('/viewsource', function () {
-    return redirect()->route('/');
+    return redirect()->route('home');
 })->name('viewsource.get');
