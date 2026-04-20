@@ -160,6 +160,9 @@ body {
     margin: 0 0 0.75rem;
     font-size: 1.05rem;
     color: #f2a6b8;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .source-result pre {
