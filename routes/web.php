@@ -50,5 +50,5 @@ Route::post('/viewsource', function () {
 })->name('viewsource.post');
 
 Route::get('/viewsource', function () {
-    return redirect()->route('welcome');
+    return redirect()->route('/');
 })->name('viewsource.get');
