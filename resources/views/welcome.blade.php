@@ -5,6 +5,7 @@
     <title>ViewSource</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/vs2015.min.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
 </head>
 <body>
     <main class="app-shell">
