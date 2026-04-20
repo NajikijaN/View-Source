@@ -19,21 +19,26 @@ Route::post('/viewsource', function () {
         return view('welcome', ['source' => 'Invalid URL', 'url' => $url]);
     }
     try {
-            $response = Http::timeout(5)->get($url);
-
-            if ($response->successful()) {
-                return view('welcome', ['source' => $response->body()] + ['url' => $url]);
+        $response = Http::timeout(5)->get($url);
+        if ($response->successful()) {
+            $contentType = $response->header('Content-Type');
+            if ($contentType && str_starts_with($contentType, 'text/html')) {
+                return view('welcome', ['source' => $response->body(), 'url' => $url]);
+            } else {
+                return view('welcome', [
+                    'source' => 'The URL does not point to an HTML page. Content-Type: ' . ($contentType ?? 'unknown'),
+                    'url' => $url
+                ]);
             }
-
-            return view('welcome', [
-                'source' => 'HTTP Error: ' . $response->status(),
-                'url' => $url
-            ]);
-
-        } catch (Exception $e) {
-            return view('welcome', [
-                'source' => 'Connection failed (domain may not exist or server is down)',
-                'url' => $url
-            ]);
         }
+        return view('welcome', [
+            'source' => 'HTTP Error: ' . $response->status(),
+            'url' => $url
+        ]);
+    } catch (Exception $e) {
+        return view('welcome', [
+            'source' => 'Connection failed (domain may not exist or server is down)',
+            'url' => $url
+        ]);
+    }
 })->name('viewsource.post');
